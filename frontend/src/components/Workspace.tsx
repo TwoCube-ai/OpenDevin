@@ -27,6 +27,7 @@ function Workspace() {
     [TabOption.PLANNER]: false,
     [TabOption.CODE]: false,
     [TabOption.BROWSER]: false,
+    [TabOption.JUPYTER]: false,
   });
 
   const tabData = useMemo(
@@ -45,6 +46,19 @@ function Workspace() {
         name: t(I18nKey.WORKSPACE$BROWSER_TAB_LABEL),
         icon: <IoIosGlobe size={18} />,
         component: <Browser key="browser" />,
+      },
+      [TabOption.JUPYTER]: {
+        name: "Jupyter",
+        icon: <IoIosGlobe size={18} />,
+        component: (
+          <embed
+            src="http://localhost:8888"
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        ),
       },
     }),
     [t],
